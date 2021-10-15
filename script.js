@@ -5,7 +5,7 @@ canvas.height = window.innerHeight;
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
-    canvas.height = document.body.innerHeight;
+    canvas.height = window.innerHeight;
     circleArray = [];
     init();
 });
