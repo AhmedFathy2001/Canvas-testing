@@ -1,11 +1,11 @@
 const canvas = document.querySelector('canvas');
 
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight - 8;
+canvas.height = window.innerHeight;
 
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - 8;
+    canvas.height = document.body.innerHeight;
     circleArray = [];
     init();
 });
