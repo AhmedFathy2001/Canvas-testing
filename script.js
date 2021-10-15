@@ -19,6 +19,18 @@ let mouse = {
 
 let maxRadius = 40;
 
+let colorArray = [
+    '#F72585',
+    '#B5179E',
+    '#7209B7',
+    '#560BAD',
+    '#480CA8',
+    '#3A0CA3',
+    '#3F37C9',
+    '#4361EE',
+    '#4895EF',
+    '#4CC9F0'
+]
 
 window.addEventListener('mousemove', (e) => {
     mouse.x = e.x;
@@ -29,24 +41,19 @@ document.addEventListener('mouseout', (e) => {
     mouse.y = undefined;
 });
 class Circle {
-    constructor(x, y, dx, dy, radius, r, g, b) {
+    constructor(x, y, dx, dy, radius) {
         this.x = x;
         this.y = y;
         this.dx = dx;
         this.dy = dy;
         this.radius = radius;
         this.minRadius = radius;
-        this.r = r;
-        this.g = g;
-        this.b = b
+        this.color = colorArray[Math.floor(Math.random() * colorArray.length)];
     }
     draw = function() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        const rgb = `rgb(${this.r},${this.g},${this.b})`;
-        ctx.strokeStyle = rgb;
-        ctx.stroke();
-        ctx.fillStyle = rgb;
+        ctx.fillStyle = this.color;
         ctx.fill();
     }
 
@@ -81,11 +88,7 @@ function init() {
         let y = Math.random() * (innerHeight - radius * 2) + radius;
         let dx = (Math.random() - 0.5) * 3;
         let dy = (Math.random() - 0.5) * 3;
-        const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
-        const r = randomBetween(0, 255);
-        const g = randomBetween(0, 255);
-        const b = randomBetween(0, 255);
-        circleArray.push(new Circle(x, y, dx, dy, radius, r, g, b));
+        circleArray.push(new Circle(x, y, dx, dy, radius));
     }
 }
 
