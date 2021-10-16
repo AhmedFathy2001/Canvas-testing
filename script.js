@@ -2,7 +2,6 @@ const canvas = document.querySelector('canvas');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -36,7 +35,7 @@ window.addEventListener('mousemove', (e) => {
     mouse.x = e.x;
     mouse.y = e.y;
 });
-document.addEventListener('mouseout', (e) => {
+document.addEventListener('mouseout', () => {
     mouse.x = undefined;
     mouse.y = undefined;
 });
@@ -81,8 +80,9 @@ class Circle {
 let circleArray = [];
 
 function init() {
-
-    for (let index = 0; index < 800; index++) {
+    let circleNum = canvas.width > 768 ? 800 : 400;
+    console.log(circleNum);
+    for (let index = 0; index < circleNum; index++) {
         let radius = (Math.random() * 10) + 5;
         let x = Math.random() * (innerWidth - radius * 2) + radius;
         let y = Math.random() * (innerHeight - radius * 2) + radius;
